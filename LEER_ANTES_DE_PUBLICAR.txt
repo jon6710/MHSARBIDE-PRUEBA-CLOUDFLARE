@@ -1,0 +1,10 @@
+MHSARBIDE - V54 REVISADA
+
+Base: V54 completa, con los seis PDF originales aprobados.
+Acceso: módulo supabase-sync.js del usuario, con correo y contraseña.
+Cambio: lectura de registros heredados desde data o data_json sin escribir sobre las tablas originales.
+Almacenamiento: conserva la clave local original y los archivos originales.
+IMPORTANTE: no se ha podido validar inicio de sesión, RLS, contenido de los registros ni guardado remoto en la cuenta de producción.
+Haga copia JSON antes de reemplazar la app. No borre datos de Chrome hasta comprobar la copia y la restauración.
+No se ha publicado en GitHub ni cambiado Supabase.
+Los PDF de referencia están incluidos, pero su fidelidad de impresión y página única no ha podido verificarse en navegador.

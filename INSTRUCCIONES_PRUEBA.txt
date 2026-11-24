@@ -1,0 +1,26 @@
+MHSARBIDE V54 — PRUEBA AISLADA DE CLOUDFLARE (24-11-2026)
+
+NO es la aplicación publicada. NO sustituir el sitio actual.
+NO subir el archivo worker-de-referencia.js: el Worker que ya está instalado en Cloudflare es el que ha superado la prueba de acceso. Si no contiene las rutas /api/records y /api/record, habrá que actualizarlo por separado.
+
+Cambios en esta COPIA:
+- No carga supabase-sync.js. No consulta Supabase.
+- Guardado local en IndexedDB con nombre independiente, sin modificar los datos de la app anterior.
+- Acceso correo + contraseña mediante la API Cloudflare que ya se probó.
+- Sincronización por registro con control básico de revisión y conflicto. SOLO se activa la subida de registros después de autorización explícita.
+- No transfiere fotografías antiguas ni adjuntos, que quedan locales. Conserva firmas de recepción y logotipo/sello/firma de empresa. No usa R2.
+- Los borrados de registros todavía NO se sincronizan. No usar en producción.
+- La recuperación de contraseña por correo NO está activa hasta configurar un servicio de correo.
+- Las plantillas de PDF se copian sin modificaciones respecto al ZIP V54 recibido.
+
+PRUEBA PROPUESTA (cuando esta carpeta se sirva en HTTPS desde un sitio de pruebas; no desde file://):
+1. Abrir la URL de PRUEBAS en iMac, nunca sustituir la app publicada.
+2. Entrar con el usuario ya creado en Cloudflare.
+3. En la pantalla 'Prueba Cloudflare preparada', pulsar 'Abrir MHSARBIDE sin subir datos'.
+4. Empresa / copias -> Importar copia JSON y seleccionar el JSON depurado incluido aparte.
+5. Confirmar que aparecen 11 clientes, 7 hojas y 2 facturas; exportar JSON local.
+6. Pulsar 'Comprobar / activar nube' y autorizar explícitamente subir a Cloudflare.
+7. Esperar mensaje de sincronización; abrir la URL DE PRUEBAS en otro dispositivo y comprobar descarga.
+8. NO editar el mismo registro a la vez en dos dispositivos. Una alerta de conflicto exige conservar ambos JSON.
+
+LIMITACIÓN IMPORTANTE: la versión que usa Cloudflare permanece sin validar en el navegador real y en los 3 dispositivos; cualquier dato sensible se debe guardar también en JSON hasta verificarla. No publicar como producción.

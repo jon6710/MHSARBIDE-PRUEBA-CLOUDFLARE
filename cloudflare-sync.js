@@ -105,7 +105,7 @@ async function initialCheck(){
  if(remote.size===0 && realLocal && Object.keys(state.meta).length===0){
    render('Primera copia en Cloudflare',['Hay datos locales y la nube está vacía. Solo se subirán si autorizas esta copia de pruebas. Las fotografías antiguas y adjuntos no se enviarán. Se conservan firmas, sello y logotipo de empresa.'],[
     ['Autorizar subida a Cloudflare',async()=>{if(!confirm('¿Subir a Cloudflare los registros de ESTA COPIA DE PRUEBAS?'))return;state.enabled=true;gate.hidden=true;await run().catch(showError);start();}],
-    ['Cancelar',()=>{state.enabled=false;render('Subida cancelada',['Tus datos locales permanecen guardados. No se ha enviado nada.'],[['Volver',()=>initialCheck().catch(showError)]]);}]
+    ['Abrir MHSARBIDE sin subir datos',()=>{state.enabled=false;gate.hidden=true;setStatus('solo local; nube pendiente de autorización');}]
    ]);return;
  }
  // Si están vacíos, NO dar consentimiento tácito para subir datos futuros.
